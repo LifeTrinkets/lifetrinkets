@@ -24,6 +24,7 @@ public class Account {
     private Long id;
 
     private String email;
+    private String password; // pogadac z Matim
     private String provider;
 
     private String accessToken;

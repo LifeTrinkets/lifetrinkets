@@ -1,5 +1,6 @@
 package com.lifetrinkets.lifetrinkets.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lifetrinkets.lifetrinkets.personalization.Personalization;
 import com.lifetrinkets.lifetrinkets.task.Task;
 import jakarta.persistence.*;
@@ -25,13 +26,14 @@ public class User {
     private String name;
 
     private String title;
-    private String desc;
+    private String description;
     private Date createdAt;
     //private Account createdBy; ??
     private Date modifiedAt;
     private Date birthday;
 
-    @OneToOne
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Personalization personalization;
 
     @OneToMany
