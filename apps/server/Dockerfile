@@ -1,12 +1,9 @@
-FROM eclipse-temurin:17-jdk-focal
+FROM maven:3.8.3-openjdk-11-slim
 
 WORKDIR /app
+COPY . .
 
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
-RUN ./mvnw -N io.takari:maven:wrapper
-RUN ./mvnw dependency:go-offline
+RUN mvn wrapper:wrapper
+RUN ./mvnw clean package
 
-COPY src ./src
-
-CMD ["./mvnw", "spring-boot:run"]
+CMD ["java", "-jar", "target/your-application.jar"]
