@@ -3,7 +3,7 @@ package com.lifetrinkets.lifetrinkets.personalization;
 import com.lifetrinkets.lifetrinkets.user.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 public class Personalization {
 
     @Id
-    private Long id;
+    private String id;
 
     private String theme;
     private String color;
@@ -26,6 +26,6 @@ public class Personalization {
     private String skin;
 
     @OneToOne
-    @JoinColumn(name="user_id")
+    @MapsId
     private User user;
 }
