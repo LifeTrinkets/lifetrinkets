@@ -1,9 +1,7 @@
 package com.lifetrinkets.lifetrinkets.skill;
 
-import com.lifetrinkets.lifetrinkets.grade.Grade;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,17 +13,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Skill {
+public class Progress {
     @Id
     private String id;
 
-    private String name;
-    private double modifier;
-    private String rank;
-
-    @ManyToOne
-    private Grade grade;
+    private double current_exp;
+    private double exp_to_next_level;
+    private int level;
 
     @OneToOne
-    private Progress progress;
+    private Skill skill;
 }

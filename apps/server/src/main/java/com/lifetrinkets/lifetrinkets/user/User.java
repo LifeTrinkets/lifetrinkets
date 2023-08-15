@@ -46,7 +46,7 @@ public class User {
 
 
     @ManyToMany
-    @JoinColumn(name = "item_id")
+    @JoinColumn(name = "item")
     private Set<Item> items = new HashSet<>();
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)

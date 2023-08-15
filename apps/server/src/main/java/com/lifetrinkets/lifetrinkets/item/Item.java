@@ -17,7 +17,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class Item {
     @Id
-    private Long id;
+    private String id;
 
     private String description;
     private Double value;
@@ -33,5 +33,4 @@ public class Item {
 
     @ManyToMany(mappedBy = "item")
     private Set<User> users = new HashSet<>();
-//s
 }
