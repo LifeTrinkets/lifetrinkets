@@ -1,6 +1,7 @@
 package com.lifetrinkets.lifetrinkets.user;
 
 import com.lifetrinkets.lifetrinkets.account.Account;
+import com.lifetrinkets.lifetrinkets.item.Item;
 import com.lifetrinkets.lifetrinkets.personalization.Personalization;
 import com.lifetrinkets.lifetrinkets.survey.Survey;
 import com.lifetrinkets.lifetrinkets.task.Task;
@@ -45,7 +46,7 @@ public class User {
 
 
     @ManyToMany
-    @JoinColumn(name = "item_id")
+    @JoinColumn(name = "item")
     private Set<Item> items = new HashSet<>();
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)

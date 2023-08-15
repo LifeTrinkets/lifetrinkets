@@ -18,7 +18,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class Origin {
     @Id
-    private Long id;
+    private String id;
 
     private String name;
     private String description;
@@ -26,4 +26,3 @@ public class Origin {
     @OneToMany
     private Set<Item> item = new HashSet<>();
 }
-//s
