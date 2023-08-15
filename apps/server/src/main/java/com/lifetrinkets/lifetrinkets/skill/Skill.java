@@ -1,7 +1,9 @@
 package com.lifetrinkets.lifetrinkets.skill;
 
+import com.lifetrinkets.lifetrinkets.grade.Grade;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,9 +16,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Skill {
     @Id
-    private Long id;
+    private String id;
 
     private String name;
-    private float modifier;
+    private double modifier;
     private String rank;
+
+    @ManyToOne
+    private Grade grade;
 }
