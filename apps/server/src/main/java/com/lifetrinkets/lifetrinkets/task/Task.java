@@ -1,13 +1,17 @@
 package com.lifetrinkets.lifetrinkets.task;
 
 import com.lifetrinkets.lifetrinkets.user.User;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -15,18 +19,18 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Task {
+
     @Id
-    private Long id;
+    private String id;
 
     private String title;
     private String description;
+
     private int difficulty;
-    private Date createdAt;
-    private Date modifiedAt;
 
-    @ManyToOne
-    private User createdBy;
+    private OffsetDateTime createdAt;
+    private OffsetDateTime modifiedAt;
 
-    @OneToOne
-    private TaskSkill taskSkill;
+    @ManyToMany(mappedBy = "tasks")
+    private Set<User> users = new HashSet<>();
 }
