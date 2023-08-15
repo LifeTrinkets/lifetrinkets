@@ -13,14 +13,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Skill {
+public class Progress {
     @Id
     private String id;
 
-    private String name;
-    private double modifier;
-    private String rank;
+    private double current_exp;
+    private double exp_to_next_level;
+    private int level;
 
     @OneToOne
-    private Progress progress;
+    private Skill skill;
 }

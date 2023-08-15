@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Requirement {
     @Id
-    private Long id;
+    private String id;
     private String value;
 
     @Enumerated
@@ -23,4 +23,3 @@ public class Requirement {
     @JoinColumn(name = "item")
     private Item item ;
 }
-//s
