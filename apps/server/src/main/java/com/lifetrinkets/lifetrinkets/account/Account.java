@@ -2,8 +2,10 @@ package com.lifetrinkets.lifetrinkets.account;
 
 import com.lifetrinkets.lifetrinkets.token.RefreshToken;
 import com.lifetrinkets.lifetrinkets.user.User;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
@@ -11,8 +13,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-import java.util.List;
+import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -20,19 +23,20 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Account {
+
     @Id
-    private Long id;
+    private String id;
 
     private String email;
-    private String password; // pogadac z Matim
     private String provider;
-
     private String accessToken;
-    private Date accountVerified;
 
-    @OneToMany
-    private List<RefreshToken> refreshToken;
+    private OffsetDateTime accountVerified;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private Set<RefreshToken> refreshToken = new HashSet<>();
 
     @OneToOne
+    @MapsId
     private User user;
 }
