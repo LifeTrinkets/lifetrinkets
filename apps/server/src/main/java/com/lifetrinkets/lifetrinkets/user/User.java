@@ -43,11 +43,13 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     private Personalization personalization;
 
+
+    @ManyToMany
+    @JoinColumn(name = "item_id")
+    private Set<Item> items = new HashSet<>();
+
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Survey survey;
-
-//    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-//    private Set<Item> items = new HashSet<>();
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn
