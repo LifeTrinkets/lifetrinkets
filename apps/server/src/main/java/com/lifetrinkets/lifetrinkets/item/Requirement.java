@@ -23,3 +23,4 @@ public class Requirement {
     @JoinColumn(name = "item")
     private Item item ;
 }
+//s
